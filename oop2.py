@@ -36,6 +36,18 @@ class Student:
             return
         return self.__average_hw_grade() < other.__average_hw_grade()
 
+    def __gt__(self, other):
+        if not isinstance(other, Student):
+            print('Сравниваются объекты разных классов')
+            return
+        return self.__average_hw_grade() > other.__average_hw_grade()
+
+    def __eq__(self, other):
+        if not isinstance(other, Student):
+            print('Сравниваются объекты разных классов')
+            return
+        return self.__average_hw_grade() == other.__average_hw_grade()
+
     def __str__(self):
         average = self.__average_hw_grade()
         some_student = f'Имя: {self.name}\n' f'Фамилия: {self.surname}\n' f'Средняя оценка за домашние задания: {round(average)}\n' f'Курсы в процессе изучения: {", ".join(self.courses_in_progress)}\n' f'Завершенные курсы: {", ".join(self.finished_courses)}\n'
@@ -68,16 +80,28 @@ class Lecturer(Mentor):
         else:
             return 0
 
-    def __str__(self):
-        mean_grade = self.__average_lecture_grade()
-        some_lecturer = f'Имя: {self.name}\n' f'Фамилия: {self.surname}\n' f'Средняя оценка за лекции: {round(mean_grade, 1)}\n'
-        return some_lecturer
-
     def __lt__(self, other):
         if not isinstance(other, Lecturer):
             print('Сравниваются объекты разных классов')
             return
         return self.__average_lecture_grade() < other.__average_lecture_grade()
+
+    def __gt__(self, other):
+        if not isinstance(other, Lecturer):
+            print('Сравниваются объекты разных классов')
+            return
+        return self.__average_lecture_grade() > other.__average_lecture_grade()
+
+    def __eq__(self, other):
+        if not isinstance(other, Lecturer):
+            print('Сравниваются объекты разных классов')
+            return
+        return self.__average_lecture_grade() == other.__average_lecture_grade()
+
+    def __str__(self):
+        mean_grade = self.__average_lecture_grade()
+        some_lecturer = f'Имя: {self.name}\n' f'Фамилия: {self.surname}\n' f'Средняя оценка за лекции: {round(mean_grade, 1)}\n'
+        return some_lecturer
 
 
 class Reviewer(Mentor):
